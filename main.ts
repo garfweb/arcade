@@ -1,8 +1,16 @@
+namespace SpriteKind {
+    export const piso = SpriteKind.create()
+}
+sprites.onOverlap(SpriteKind.Enemy, SpriteKind.piso, function (sprite, otherSprite) {
+    info.changeLifeBy(-1)
+    sprites.destroy(bala)
+})
 sprites.onOverlap(SpriteKind.Player, SpriteKind.Enemy, function (sprite, otherSprite) {
     info.changeScoreBy(1)
     sprites.destroy(bala)
 })
 let bala: Sprite = null
+info.setLife(3)
 scene.setBackgroundColor(1)
 let nave = sprites.create(img`
     . . . . . . . c d . . . . . . . 
@@ -24,6 +32,11 @@ let nave = sprites.create(img`
     `, SpriteKind.Player)
 nave.setPosition(80, 110)
 controller.moveSprite(nave, 100, 0)
+let tierra = sprites.create(img`
+    ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff
+    ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff
+    `, SpriteKind.piso)
+tierra.setPosition(80, 118)
 game.onUpdateInterval(5000, function () {
     bala = sprites.create(img`
         . . . . . . . . . . . . . . . . 
